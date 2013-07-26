@@ -7,13 +7,10 @@
             [total-recall.api :as api]))
 
 (defn final-pair [unmatched unseen]
-  (cond (and (= 1 (count unmatched) (count unseen)))
-        (list (first unmatched) (first unseen))
-
-        (and (= 2 (count unseen)) (empty? unmatched))
-        unseen
-
-        :else nil))
+  (cond
+   (and (= 1 (count unmatched) (count unseen))) [(first unmatched) (first unseen)]
+   (and (empty? unmatched) (= 2 (count unseen))) unseen
+   :else nil))
 
 (defn solve [game]
   (loop [unmatched {} ; card -> position
