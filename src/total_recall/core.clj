@@ -8,7 +8,7 @@
 
 (defn final-pair [unmatched unseen]
   (cond
-   (and (= 1 (count unmatched) (count unseen))) [(first unmatched) (first unseen)]
+   (= 1 (count unmatched) (count unseen)) [(first unmatched) (first unseen)]
    (and (empty? unmatched) (= 2 (count unseen))) unseen
    :else nil))
 
